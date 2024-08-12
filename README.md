@@ -3,5 +3,8 @@
 xhost +local:docker
 
 ### Run
-make build
-make
+`make build`
+
+`make`
+
+### Add new file in UI
