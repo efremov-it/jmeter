@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  jmeter:
+    image: jmeter-plugins
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: jmeter
+    environment:
+      DISPLAY: ${DISPLAY}
+    volumes:
+      - ./test:/tests
+      - ./logs:/logs
+      - ./report:/report
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    working_dir: /tests
+    entrypoint: >
+      sh -c "jmeter -t /tests/test.jmx"
+    # entrypoint: >
+    #   sh -c "jmeter -t /tests/lead-transfer.jmx"
